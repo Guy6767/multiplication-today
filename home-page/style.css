@@ -1,0 +1,81 @@
+body {
+  background-color: #f0f0f0;
+  width: 70%;
+  text-align: center;
+  color: #4c4c4c;
+  margin: auto;
+}
+
+/* title */
+
+.title {
+  text-align: center;
+  font-family: 'Heebo', sans-serif;
+  background-color: white;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, .10);
+}
+
+h1 {
+  font-size: 5em;
+  font-weight: 500;
+  margin-bottom: 0px;
+  margin: auto;
+}
+
+h2 {
+  font-size: 2em;
+  font-weight: lighter;
+  margin: auto;
+}
+
+/* card deck  */
+
+.card-deck {
+  font-family: 'Heebo', sans-serif;
+  margin-bottom: 4rem;
+}
+
+.card-column {
+  padding: 0;
+  margin-bottom: 3em;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, .10);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+
+@media (max-width: 988px) {
+
+  .card-img-top {
+    height: 30vw;
+  }
+
+  h5 {
+    font-size: 3em;
+  }
+
+  p {
+    font-size: 2em;
+  }
+
+}
+
+
+
+/* Scrollbar hiding */
+
+::-webkit-scrollbar {
+  width: 0;
+}
