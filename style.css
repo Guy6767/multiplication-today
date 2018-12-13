@@ -64,12 +64,20 @@ h2 {
     height: 30vw;
   }
 
+  h1 {
+    font-size: 3em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
   button {
-    height: 3em;
+    height: 2.2em;
   }
 
   h5 {
-    font-size: 3em;
+    font-size: 2em;
   }
 
   p {
