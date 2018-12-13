@@ -5,3 +5,7 @@ $(document).ready(function() {
     $(this).toggleClass('active');
   });
 });
+
+$(".dropdown-toggle").click(function() {
+  $(".fas").toggleClass("fas-turned");
+});

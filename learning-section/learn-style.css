@@ -18,6 +18,14 @@ a, a:hover, a:focus {
   transition: all 0.3s;
 }
 
+.fas {
+  margin-right: 10px;
+}
+
+.fas-turned {
+  transform: rotate(90deg);
+}
+
 .navbar {
   padding: 15px 10px;
   background: #fff;
@@ -96,8 +104,12 @@ a, a:hover, a:focus {
   background: #6d7fcc;
 }
 
+.dropdown-toggle {
+  margin-top: 1em;
+}
+
 a[data-toggle="collapse"] {
-  position: relative;
+  /* position: absolute; */
 }
 
 .dropdown-toggle::after {
@@ -184,6 +196,7 @@ a.article, a.article:hover {
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
+
 @media (max-width: 768px) {
   #sidebar {
     margin-left: -250px;
