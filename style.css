@@ -1,3 +1,4 @@
+
 body {
   background-color: #f0f0f0;
   width: 70%;
@@ -62,6 +63,10 @@ h2 {
     height: 30vw;
   }
 
+  button {
+    height: 3em;
+  }
+
   h5 {
     font-size: 3em;
   }
@@ -72,6 +77,11 @@ h2 {
 
 }
 
+@media (max-width: 700px) {
+  button {
+    height: 4em;
+  }
+}
 
 
 /* Scrollbar hiding */
