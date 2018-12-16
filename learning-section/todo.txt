@@ -1,3 +1,13 @@
 
-1. remove active (?)
-2. remove content
+/* ---------------------------------------------------
+                        TASKS
+----------------------------------------------------- */
+
+1. fix the movement between exercise sections (color, disabling moving without confirm)
+
+
+/* ---------------------------------------------------
+                         BUGS
+----------------------------------------------------- */
+
+1. remove content when sidebar is enabled

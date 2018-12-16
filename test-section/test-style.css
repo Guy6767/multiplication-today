@@ -1,6 +1,15 @@
+
 body {
   font-family: 'Heebo', sans-serif;
   background: #f0f0f0;
+  color: #4c4c4c;
+}
+
+p {
+  font-family: 'Heebo', sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
   color: #4c4c4c;
 }
 
@@ -8,11 +17,6 @@ a, a:hover, a:focus {
   color: inherit;
   text-decoration: none;
   transition: all 0.3s;
-}
-
-.button-clicked {
-  background-color: #f0f0f0 !important;
-  color: #007bff !important;
 }
 
 .fas {
@@ -38,6 +42,8 @@ a, a:hover, a:focus {
   border: none;
 }
 
+
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -57,11 +63,13 @@ a, a:hover, a:focus {
   transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
   transform-origin: bottom left;
   box-shadow: 0 0 25px rgba(0, 0, 0, .2);
+
 }
 
 #sidebar.active {
   margin-left: -250px;
   transform: rotateY(100deg);
+
 }
 
 #sidebar .sidebar-header {
@@ -119,6 +127,7 @@ ul ul a {
   background: #0065d1;
 }
 
+
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
@@ -133,11 +142,7 @@ ul ul a {
   padding: 1em;
   border-radius: 10px;
   box-shadow: 0 0 25px rgba(0, 0, 0, .10);
-}
-
-.question {
-  margin-top: 1em;
-  font-size: 6em;
+  object-fit: contain;
 }
 
 .answer-button {
@@ -148,12 +153,12 @@ ul ul a {
   margin-bottom: 1rem;
   padding: 1em;
   border-radius: 10px !important;
-  box-shadow: 0 0 25px rgba(0, 0, 0, .20) !important;
+  box-shadow: 0 0 25px rgba(0, 0, 0, .20);
   object-fit: contain;
 }
 
 .answer-container {
-  display: inline;
+    display: inline;
 }
 
 #content {
@@ -201,6 +206,7 @@ ul ul a {
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
+
 @media (max-width: 768px) {
   #sidebar {
     margin-left: -250px;
@@ -235,9 +241,13 @@ ul ul a {
   #sidebarCollapse.active span:last-of-type {
     transform: rotate(-45deg) translate(1px, -1px);
   }
+
+
 }
 
+
 /* Scrollbar hiding */
+
 ::-webkit-scrollbar {
   width: 0;
 }
