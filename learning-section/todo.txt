@@ -3,10 +3,8 @@
                         TASKS
 ----------------------------------------------------- */
 
-1. fix photos in home page (lower quality, switch the pictures, find a new one)
-2. round up all the exercise functions and put them in start exercise function
-3. create a loop that will loop 4 times and add to each button a random
-number that is close to the answer
+1. round up all the exercise functions and put them in start exercise function
+2. create a function in questionGenerator that waits for a button press, then checks the answer
 
 
 
@@ -24,3 +22,4 @@ number that is close to the answer
 ----------------------------------------------------- */
 
 1. remove content when sidebar is enabled
+2. duplicate answers options
