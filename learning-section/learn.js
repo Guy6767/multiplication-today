@@ -3,6 +3,7 @@ $(document).ready(function() {
   $('#sidebarCollapse').on('click', function() {
     $('#sidebar').toggleClass('active');
     $(this).toggleClass('active');
+
   });
 });
 
@@ -10,39 +11,43 @@ $(".dropdown-toggle").click(function() {
   $(".fas").toggleClass("fas-turned");
 });
 
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////// exercise section /////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+
 // exercise toggler
 $(document).ready(function() {
   $(".exercise").hide();
+  startExercise();
 });
 
-// generates a random question based on the number clicked
-function questionGenerator(num) {
-  var randomNumber = Math.floor(Math.random() * 10 + 1);
-  var question = num + " X " + randomNumber;
-  $(".question").text(question);
+// initias global variables
+var currentNumberExercise;
+var exerciseClass;
+
+// starts the exercise mode
+function startExercise() {
+  $("#pageSubmenu a").on("click", function() {
+    // checks that the player didnt press on the section he's already in
+    if ($(exerciseClass).attr("class") != $(this).attr("class")) {
+      $(".exercise").show();
+      // changes the buttons colors
+      currentNumberExercise = this;
+      $(currentNumberExercise).toggleClass("button-clicked");
+      $(exerciseClass).toggleClass("button-clicked");
+      exerciseClass = $(this);
+      questionGenerator();
+    }
+  });
 }
 
-var currentNumberExercise;
-
-// showcase the question when number is clicked
-$("#pageSubmenu a").on("click", function() {
-  if (this == currentNumberExercise) {
-    var answer = confirm("?אתה בטוח שאתה רוצה לצאת");
-    if (answer) {
-      exerciseGenerator(this);
-    }
-  } else {
-    exerciseGenerator(this);
-  }
-});
-
-
-function exerciseGenerator(thisButton) {
-
-  currentNumberExercise = thisButton;
-  $(thisButton).toggleClass("button-clicked");
-  $(".exercise").show();
-  var numberClicked = $(thisButton).attr("class");
-  numberClicked = parseInt(numberClicked.slice(9));
-  questionGenerator(numberClicked);
+// generates a random question based on the number clicked
+function questionGenerator() {
+  numberClicked = parseInt(exerciseClass.attr("class").slice(9));
+  var randomNumber = Math.floor(Math.random() * 10 + 1);
+  var question = numberClicked + " X " + randomNumber;
+  answer = randomNumber * numberClicked;
+  $(".question").text(question);
 }

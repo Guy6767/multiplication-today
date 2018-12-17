@@ -3,7 +3,20 @@
                         TASKS
 ----------------------------------------------------- */
 
-1. fix the movement between exercise sections (color, disabling moving without confirm)
+1. fix photos in home page (lower quality, switch the pictures, find a new one)
+2. round up all the exercise functions and put them in start exercise function
+3. create a loop that will loop 4 times and add to each button a random
+number that is close to the answer
+
+
+
+
+
+
+
+
+
+
 
 
 /* ---------------------------------------------------
