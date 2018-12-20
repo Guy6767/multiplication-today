@@ -20,12 +20,22 @@ $(".dropdown-toggle").click(function() {
 $(".multiplication-table-section").click(function() {
   $(".learning-welcome-message").hide();
   $(".exercise").hide();
+  $(".multiplication-by-number").hide();
   $(".multiplication-table").show();
 });
 
 
 $(document).ready(function() {
   $(".multiplication-table").hide();
+  $(".multiplication-by-number").hide();
+
+});
+
+$(".multiplication-by-number-section").click(function() {
+  $(".learning-welcome-message").hide();
+  $(".exercise").hide();
+  $(".multiplication-table").hide();
+  $(".multiplication-by-number").show();
 });
 
 
@@ -77,6 +87,7 @@ function startExercise() {
     // hides all other sections
     $(".learning-welcome-message").hide();
     $(".multiplication-table").hide();
+    $(".multiplication-by-number").hide();
     // checks that the player didnt press on the section he's already in
     if ($(exerciseClass).attr("class") != $(this).attr("class")) {
       $(".exercise").show();
@@ -229,6 +240,10 @@ $(".dark-mode").click(function() {
   $(".question-card").toggleClass("question-card-dark");
   $("body").toggleClass("body-dark");
   $(".navbar").toggleClass("navbar-dark");
+  $(".multiplication-table").toggleClass("multiplication-table-dark");
+  $("#sidebar").toggleClass("sidebar-dark");
+  $(".learning-welcome-message").toggleClass("learning-welcome-message-dark");
+  $(".by-number-card").toggleClass("by-number-card-dark");
   if ($(".dark-mode-text").text() == "למצב לילה") {
     $(".dark-mode-text").text("למצב יום");
     $(".dark-mode .fas").removeClass('fa-moon').addClass('fa-sun');
@@ -237,3 +252,8 @@ $(".dark-mode").click(function() {
     $(".dark-mode-text").text("למצב לילה");
   }
 });
+
+// // handles navbar hiding content on mobile
+// $("#sidebarCollapse").click(function() {
+//   $("#content").hide();
+// });
