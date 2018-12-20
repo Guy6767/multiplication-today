@@ -3,13 +3,31 @@ $(document).ready(function() {
   $('#sidebarCollapse').on('click', function() {
     $('#sidebar').toggleClass('active');
     $(this).toggleClass('active');
-
   });
 });
 
 $(".dropdown-toggle").click(function() {
   $(".fas").toggleClass("fas-turned");
 });
+
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////// learn section /////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+
+
+$(".multiplication-table-section").click(function() {
+  $(".learning-welcome-message").hide();
+  $(".exercise").hide();
+  $(".multiplication-table").show();
+});
+
+
+$(document).ready(function() {
+  $(".multiplication-table").hide();
+});
+
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -29,16 +47,36 @@ function randomNumberGenerator(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+var answerSet;
+
+function answerSetGenerator() {
+  answerSet = new Set();
+  for (var i = 0; i <= 100; i++) {
+    answerSet.add(randomNumberGenerator(1, 10));
+    if (answerSet.size == 10) {
+      break;
+    }
+  }
+  // convert the SET "answerSet to ARRAY
+  answerSet = Array.from(answerSet);
+}
+answerSetGenerator();
+
+
 // initias global variables
 var currentNumberExercise;
 var exerciseClass;
 var answer;
 var answerNumber;
 var userAnswer;
+var counter = 0;
 
-// starts the exercise mode
+// starts the exercise mode and handles the sidebar buttom style
 function startExercise() {
   $("#pageSubmenu a").on("click", function() {
+    // hides all other sections
+    $(".learning-welcome-message").hide();
+    $(".multiplication-table").hide();
     // checks that the player didnt press on the section he's already in
     if ($(exerciseClass).attr("class") != $(this).attr("class")) {
       $(".exercise").show();
@@ -54,15 +92,29 @@ function startExercise() {
 
 // generates a random question based on the number clicked
 function questionGenerator() {
-  numberClicked = parseInt(exerciseClass.attr("class").slice(9));
-  var randomNumber = randomNumberGenerator(1, 10);
-  var question = numberClicked + " X " + randomNumber;
-  answer = randomNumber * numberClicked;
+
+  if (counter == 10) {
+    counter = 0;
+    answerSetGenerator();
+  }
+  var randomNumber = answerSet[counter];
+  counter++;
+
+  // checks what exercise the user had chosen
+  if (exerciseClass.attr("class") == "exercise-random button-clicked") {
+    chosenNumber = randomNumberGenerator(1, 10);
+  } else {
+    chosenNumber = parseInt(exerciseClass.attr("class").slice(9));
+  }
+
+  // displays the question
+  var question = chosenNumber + " X " + randomNumber;
+  answer = randomNumber * chosenNumber;
   $(".question").text(question);
   buttonsAnswers();
   checkAnswer();
-
 }
+
 
 // adds the answers to the buttons
 function buttonsAnswers() {
@@ -75,6 +127,8 @@ function buttonsAnswers() {
   for (var i = 0; i <= 100; i++) {
     if (answer <= 20) {
       randomAnswer = randomNumberGenerator(1, (answer + 20));
+    } else if (answer >= 100) {
+      randomAnswer = randomNumberGenerator((answer - 20), 100);
     } else {
       randomAnswer = randomNumberGenerator((answer - 20), (answer + 20));
     }
@@ -115,9 +169,6 @@ function checkAnswer() {
 // continues to the next exercise
 function nextQuestion() {
   $(".answer-button").off("click");
-  setTimeout(function() {
-    questionGenerator();
-  }, 600);
 }
 
 // makes the sound of wrong / right answers
@@ -151,18 +202,38 @@ function makeVisual(result) {
       setTimeout(function() {
         $(".answer-button-correct").removeClass("answer-button-correct");
       }, 600);
+      setTimeout(function() {
+        questionGenerator();
+      }, 600);
       break;
 
     case "incorrect":
       $(".question-card").addClass("question-card-incorrect");
       setTimeout(function() {
         $(".question-card").removeClass("question-card-incorrect");
-      }, 600);
-      $(userAnswer).addClass("answer-button-incorrect");
+      }, 1000);
+      $(".button-" + answerNumber).addClass("answer-button-incorrect");
       setTimeout(function() {
         $(".answer-button-incorrect").removeClass("answer-button-incorrect");
-      }, 600);
+      }, 1000);
+      setTimeout(function() {
+        questionGenerator();
+      }, 1000);
       break;
 
   }
 }
+
+// enables dark mode
+$(".dark-mode").click(function() {
+  $(".question-card").toggleClass("question-card-dark");
+  $("body").toggleClass("body-dark");
+  $(".navbar").toggleClass("navbar-dark");
+  if ($(".dark-mode-text").text() == "למצב לילה") {
+    $(".dark-mode-text").text("למצב יום");
+    $(".dark-mode .fas").removeClass('fa-moon').addClass('fa-sun');
+  } else {
+    $(".dark-mode .fas").removeClass('fa-sun').addClass('fa-moon');
+    $(".dark-mode-text").text("למצב לילה");
+  }
+});

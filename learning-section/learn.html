@@ -28,10 +28,10 @@
       <ul class="list-unstyled components">
         <p>אפשרויות</p>
         <li>
-          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" ><i class="fas fa-caret-down"></i>למידה</a>
+          <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"><i class="fas fa-caret-down"></i>למידה</a>
           <ul class="collapse list-unstyled" id="homeSubmenu">
             <li>
-              <a href="#">לוח הכפל</a>
+              <a class="multiplication-table-section" href="#">לוח הכפל</a>
             </li>
             <li>
               <a href="#">כפולות לפי מספר</a>
@@ -42,6 +42,9 @@
 
           <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" style="margin-top: 1em"><i class="fas fa-caret-down"></i>תרגול</a>
           <ul class="collapse list-unstyled" id="pageSubmenu">
+            <li>
+              <a class="exercise-random"><i class="fas fa-dice-six"></i>כפולות אקראיות</a>
+            </li>
             <li>
               <a class="exercise-1">1 כפולות</a>
             </li>
@@ -98,6 +101,9 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
               <li class="nav-item active">
+                <a class="nav-link dark-mode" href="#"><i class="fas fa-moon"></i><span class="dark-mode-text">למצב לילה</span></a>
+              </li>
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="#">Page</a>
               </li>
               <li class="nav-item">
@@ -105,17 +111,175 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Page</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Page</a>
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>
       </nav>
 
+      <!-- welcome message -->
+
+      <div class="learning-welcome-message">
+        <div class="welcome-message">
+          <h1 dir="rtl" style="padding:0.5em;">ברוכים הבאים, הגעתם לאיזור<span style="color: #007bff;"> הלמידה!</span></h1>
+          <p dir="rtl" style="font-size: 1.5em;">בתפריט משמאל תוכלו למצוא את לוח הכפל תחת הלשונית "למידה" ואחר כך לתרגל כפולות לבחירתכם תחת הלשונית "תרגול".</p>
+        </div>
+      </div>
+
+      <!-- learning section -->
+
+      <!-- by table -->
+
+      <div class="multiplication-table">
+        <table>
+          <tr>
+            <th>X</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>8</th>
+            <th>9</th>
+            <th>10</th>
+          </tr>
+          <tr>
+            <th>1</th>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>2</td>
+            <td>4</td>
+            <td>6</td>
+            <td>8</td>
+            <td>10</td>
+            <td>12</td>
+            <td>14</td>
+            <td>16</td>
+            <td>18</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>3</td>
+            <td>6</td>
+            <td>9</td>
+            <td>12</td>
+            <td>15</td>
+            <td>18</td>
+            <td>21</td>
+            <td>24</td>
+            <td>27</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <th>4</th>
+            <td>4</td>
+            <td>8</td>
+            <td>12</td>
+            <td>16</td>
+            <td>20</td>
+            <td>24</td>
+            <td>28</td>
+            <td>32</td>
+            <td>36</td>
+            <td>40</td>
+          </tr>
+          <tr>
+            <th>5</th>
+            <td>5</td>
+            <td>10</td>
+            <td>15</td>
+            <td>20</td>
+            <td>25</td>
+            <td>30</td>
+            <td>35</td>
+            <td>40</td>
+            <td>45</td>
+            <td>50</td>
+          </tr>
+          <th>6</th>
+          <td>6</td>
+          <td>12</td>
+          <td>18</td>
+          <td>24</td>
+          <td>30</td>
+          <td>36</td>
+          <td>42</td>
+          <td>48</td>
+          <td>54</td>
+          <td>60</td>
+          </tr>
+          <tr>
+            <th>7</th>
+            <td>7</td>
+            <td>14</td>
+            <td>21</td>
+            <td>28</td>
+            <td>35</td>
+            <td>42</td>
+            <td>49</td>
+            <td>56</td>
+            <td>63</td>
+            <td>70</td>
+          </tr>
+          <tr>
+            <th>8</th>
+            <td>8</td>
+            <td>16</td>
+            <td>24</td>
+            <td>32</td>
+            <td>40</td>
+            <td>48</td>
+            <td>56</td>
+            <td>64</td>
+            <td>72</td>
+            <td>80</td>
+          </tr>
+          <tr>
+            <th>9</th>
+            <td>9</td>
+            <td>18</td>
+            <td>27</td>
+            <td>36</td>
+            <td>45</td>
+            <td>54</td>
+            <td>63</td>
+            <td>72</td>
+            <td>81</td>
+            <td>90</td>
+          </tr>
+          <tr>
+            <th>10</th>
+            <td>10</td>
+            <td>20</td>
+            <td>30</td>
+            <td>40</td>
+            <td>50</td>
+            <td>60</td>
+            <td>70</td>
+            <td>80</td>
+            <td>90</td>
+            <td>100</td>
+          </tr>
+        </table>
+
+      </div>
 
 
+      <!-- by number -->
 
 
       <!-- excercise section -->
@@ -123,7 +287,7 @@
       <div class="exercise">
 
         <div class="question-card">
-              <h1 class="question"></h1>
+          <h1 class="question"></h1>
         </div>
 
         <div class="container-fluid">
