@@ -70,7 +70,7 @@ function answerSetGenerator() {
   // convert the SET "answerSet to ARRAY
   answerSet = Array.from(answerSet);
 }
-answerSetGenerator();
+
 
 
 // initias global variables
@@ -88,6 +88,9 @@ function startExercise() {
     $(".learning-welcome-message").hide();
     $(".multiplication-table").hide();
     $(".multiplication-by-number").hide();
+    // returns counter to zero and creates a new set
+    counter = 0;
+    answerSetGenerator();
     // checks that the player didnt press on the section he's already in
     if ($(exerciseClass).attr("class") != $(this).attr("class")) {
       $(".exercise").show();
@@ -103,13 +106,14 @@ function startExercise() {
 
 // generates a random question based on the number clicked
 function questionGenerator() {
-
-  if (counter == 10) {
+  console.log(counter);
+  if (counter == 9) {
     counter = 0;
     answerSetGenerator();
+    console.log(answerSet);
   }
-  var randomNumber = answerSet[counter];
   counter++;
+  var randomNumber = answerSet[counter];
 
   // checks what exercise the user had chosen
   if (exerciseClass.attr("class") == "exercise-random button-clicked") {
@@ -138,7 +142,7 @@ function buttonsAnswers() {
   for (var i = 0; i <= 100; i++) {
     if (answer <= 20) {
       randomAnswer = randomNumberGenerator(1, (answer + 20));
-    } else if (answer >= 100) {
+    } else if (answer >= 80) {
       randomAnswer = randomNumberGenerator((answer - 20), 100);
     } else {
       randomAnswer = randomNumberGenerator((answer - 20), (answer + 20));
@@ -244,6 +248,7 @@ $(".dark-mode").click(function() {
   $("#sidebar").toggleClass("sidebar-dark");
   $(".learning-welcome-message").toggleClass("learning-welcome-message-dark");
   $(".by-number-card").toggleClass("by-number-card-dark");
+  $("#sidebar ul li a").toggleClass("sidebar-dark-mode");
   if ($(".dark-mode-text").text() == "למצב לילה") {
     $(".dark-mode-text").text("למצב יום");
     $(".dark-mode .fas").removeClass('fa-moon').addClass('fa-sun');

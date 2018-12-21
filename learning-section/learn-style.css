@@ -10,6 +10,12 @@ a, a:hover, a:focus {
   transition: all 0.3s;
 }
 
+.a-dark-mode {}
+
+.a-dark-mode:hover {
+  background-color: #282828;
+}
+
 .button-clicked {
   background-color: #f0f0f0 !important;
   color: #007bff !important;
@@ -60,7 +66,7 @@ a, a:hover, a:focus {
 }
 
 .sidebar-dark {
-  background-color: #282828 !important;
+  background-color: #202020 !important;
 }
 
 #sidebar.active {
@@ -96,6 +102,16 @@ a, a:hover, a:focus {
   background: #fff;
 }
 
+.sidebar-dark-mode {
+  background: #282828 !important;
+  color: #fff !important;
+}
+
+.sidebar-dark-mode:hover {
+  color: #fff !important;
+  background: #0065d1 !important;
+}
+
 #sidebar ul li.active>a, a[aria-expanded="true"] {
   color: #fff;
   background: #0065d1;
@@ -119,6 +135,24 @@ ul ul a {
 .navbar-dark {
   background-color: #282828 !important;
   color: rgba(255, 255, 255, 0.87) !important;
+}
+
+.mobile-nav-button {
+  width: 2.5em;
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+  .top-navbar-items {
+    margin-top: 1em;
+    margin-right: 0.5em;
+    text-align: right;
+  }
+
+  .top-navbar-items hr {
+    width: 100%;
+    border-top: 1px solid rgba(17, 11, 11, 0.42);
+  }
 }
 
 /* welcome message */
@@ -207,11 +241,6 @@ th {
   background-color: #282828;
   color: rgba(255, 255, 255, 0.87);
 }
-
-.by-number-card hr {
-  color: #fff;
-}
-
 
 @media (max-width: 768px) {
   .by-number-card {
