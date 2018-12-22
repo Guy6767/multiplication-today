@@ -126,9 +126,8 @@ function questionGenerator() {
   var randomNumber = answerSet[counter];
 
   // checks what exercise the user had chosen
-  if (exerciseClass.attr("class") == "exercise-random button-clicked" || "exercise-random sidebar-dark-mode button-clicked") {
+  if ((exerciseClass.attr("class") == "exercise-random button-clicked") || (exerciseClass.attr("class") == "exercise-random sidebar-dark-mode button-clicked")) {
     chosenNumber = randomNumberGenerator(1, 10);
-    console.log("hey");
   } else {
     chosenNumber = parseInt(exerciseClass.attr("class").slice(9));
   }
