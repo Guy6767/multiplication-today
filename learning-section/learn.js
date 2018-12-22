@@ -1,3 +1,4 @@
+
 // sidebar behavior
 $(document).ready(function() {
   $('#sidebarCollapse').on('click', function() {
@@ -16,6 +17,23 @@ $(".dropdown-toggle").click(function() {
 
 ///////////////////////////////////////////////////////////////////////////
 
+$(document).ready(function() {
+  $(".multiplication-table").hide();
+  $(".multiplication-by-number").hide();
+  startLearning();
+});
+
+function startLearning() {
+  $("#homeSubmenu a").on("click", function() {
+    // checks that the player didnt press on the section he's already in
+    if ($(exerciseClass).attr("class") != $(this).attr("class")) {
+      currentNumberExercise = this;
+      $(currentNumberExercise).toggleClass("button-clicked");
+      $(exerciseClass).toggleClass("button-clicked");
+      exerciseClass = $(this);
+    }
+  });
+}
 
 $(".multiplication-table-section").click(function() {
   $(".learning-welcome-message").hide();
@@ -24,12 +42,6 @@ $(".multiplication-table-section").click(function() {
   $(".multiplication-table").show();
 });
 
-
-$(document).ready(function() {
-  $(".multiplication-table").hide();
-  $(".multiplication-by-number").hide();
-
-});
 
 $(".multiplication-by-number-section").click(function() {
   $(".learning-welcome-message").hide();
@@ -51,14 +63,23 @@ $(document).ready(function() {
   startExercise();
 });
 
+// initias global variables
+var currentNumberExercise;
+var exerciseClass;
+var answer;
+var answerNumber;
+var userAnswer;
+var answerSet;
+var counter = 0;
+
+// creates a random number in a range
 function randomNumberGenerator(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-var answerSet;
-
+// generates a SET of pre-made answers
 function answerSetGenerator() {
   answerSet = new Set();
   for (var i = 0; i <= 100; i++) {
@@ -70,16 +91,6 @@ function answerSetGenerator() {
   // convert the SET "answerSet to ARRAY
   answerSet = Array.from(answerSet);
 }
-
-
-
-// initias global variables
-var currentNumberExercise;
-var exerciseClass;
-var answer;
-var answerNumber;
-var userAnswer;
-var counter = 0;
 
 // starts the exercise mode and handles the sidebar buttom style
 function startExercise() {
@@ -106,18 +117,18 @@ function startExercise() {
 
 // generates a random question based on the number clicked
 function questionGenerator() {
-  console.log(counter);
+
   if (counter == 9) {
     counter = 0;
     answerSetGenerator();
-    console.log(answerSet);
   }
   counter++;
   var randomNumber = answerSet[counter];
 
   // checks what exercise the user had chosen
-  if (exerciseClass.attr("class") == "exercise-random button-clicked") {
+  if (exerciseClass.attr("class") == "exercise-random button-clicked" || "exercise-random sidebar-dark-mode button-clicked") {
     chosenNumber = randomNumberGenerator(1, 10);
+    console.log("hey");
   } else {
     chosenNumber = parseInt(exerciseClass.attr("class").slice(9));
   }
@@ -128,6 +139,7 @@ function questionGenerator() {
   $(".question").text(question);
   buttonsAnswers();
   checkAnswer();
+
 }
 
 
@@ -168,7 +180,8 @@ function buttonsAnswers() {
 
 // checks to see wheter player was right or wrong
 function checkAnswer() {
-  $(".answer-button").on("click", function() {
+  $(".answer-button").off().on("click", function() {
+    // $(".answer-button").unbind("click");
     userAnswer = this;
     if (answer == parseInt($(userAnswer).text())) {
       makeVisual("correct");
@@ -177,13 +190,7 @@ function checkAnswer() {
       makeVisual("incorrect");
       makeSound("incorrect");
     }
-    nextQuestion();
   });
-}
-
-// continues to the next exercise
-function nextQuestion() {
-  $(".answer-button").off("click");
 }
 
 // makes the sound of wrong / right answers
@@ -210,34 +217,35 @@ function makeVisual(result) {
 
     case "correct":
       $(".question-card").addClass("question-card-correct");
+      $(userAnswer).addClass("answer-button-correct");
+
       setTimeout(function() {
         $(".question-card").removeClass("question-card-correct");
-      }, 600);
-      $(userAnswer).addClass("answer-button-correct");
-      setTimeout(function() {
         $(".answer-button-correct").removeClass("answer-button-correct");
-      }, 600);
-      setTimeout(function() {
         questionGenerator();
       }, 600);
       break;
 
     case "incorrect":
+
       $(".question-card").addClass("question-card-incorrect");
+      $(".button-" + answerNumber).addClass("answer-button-incorrect");
+
       setTimeout(function() {
         $(".question-card").removeClass("question-card-incorrect");
-      }, 1000);
-      $(".button-" + answerNumber).addClass("answer-button-incorrect");
-      setTimeout(function() {
         $(".answer-button-incorrect").removeClass("answer-button-incorrect");
-      }, 1000);
-      setTimeout(function() {
         questionGenerator();
       }, 1000);
       break;
 
   }
 }
+
+///////////////////////////////////////////////////////////////////////////
+
+///////////////////////////// dark mode ///////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
 
 // enables dark mode
 $(".dark-mode").click(function() {
@@ -257,8 +265,3 @@ $(".dark-mode").click(function() {
     $(".dark-mode-text").text("למצב לילה");
   }
 });
-
-// // handles navbar hiding content on mobile
-// $("#sidebarCollapse").click(function() {
-//   $("#content").hide();
-// });
