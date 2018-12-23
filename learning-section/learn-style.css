@@ -44,6 +44,15 @@ a, a:hover, a:focus {
   border: none;
 }
 
+.main-screen-hidden {
+  display: none!important;
+}
+
+
+.mobile-nav-button-hidden {
+  display: none!important;
+}
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -299,7 +308,7 @@ th {
   border-width: 0;
   box-shadow: 0 0 25px rgba(0, 0, 0, .20) !important;
   object-fit: contain;
-  
+
 }
 
 .answer-button-incorrect {

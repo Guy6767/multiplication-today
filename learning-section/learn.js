@@ -1,4 +1,3 @@
-
 // sidebar behavior
 $(document).ready(function() {
   $('#sidebarCollapse').on('click', function() {
@@ -264,3 +263,12 @@ $(".dark-mode").click(function() {
     $(".dark-mode-text").text("למצב לילה");
   }
 });
+
+
+if ($(window).width() < 768) {
+  $("#sidebarCollapse").click(function() {
+    $(".main-screen").toggleClass("main-screen-hidden");
+    $(".mobile-nav-button").toggleClass("mobile-nav-button-hidden");
+  });
+
+}
