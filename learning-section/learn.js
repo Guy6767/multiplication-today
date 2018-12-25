@@ -10,6 +10,16 @@ $(".dropdown-toggle").click(function() {
   $(".fas").toggleClass("fas-turned");
 });
 
+function hideAndShow(showElement) {
+  $(".learning-welcome-message").hide();
+  $(".multiplication-table").hide();
+  $(".multiplication-by-number").hide();
+  $(".exercise").hide();
+  $(".contact-form").hide();
+  $(".contact-form-completed").hide();
+  $("." + showElement).show();
+}
+
 ///////////////////////////////////////////////////////////////////////////
 
 ///////////////////////// learn section /////////////////////////////////
@@ -17,8 +27,7 @@ $(".dropdown-toggle").click(function() {
 ///////////////////////////////////////////////////////////////////////////
 
 $(document).ready(function() {
-  $(".multiplication-table").hide();
-  $(".multiplication-by-number").hide();
+  hideAndShow("learning-welcome-message");
   startLearning();
 });
 
@@ -35,18 +44,12 @@ function startLearning() {
 }
 
 $(".multiplication-table-section").click(function() {
-  $(".learning-welcome-message").hide();
-  $(".exercise").hide();
-  $(".multiplication-by-number").hide();
-  $(".multiplication-table").show();
+  hideAndShow("multiplication-table");
 });
 
 
 $(".multiplication-by-number-section").click(function() {
-  $(".learning-welcome-message").hide();
-  $(".exercise").hide();
-  $(".multiplication-table").hide();
-  $(".multiplication-by-number").show();
+  hideAndShow("multiplication-by-number");
 });
 
 
@@ -58,7 +61,6 @@ $(".multiplication-by-number-section").click(function() {
 
 // exercise toggler
 $(document).ready(function() {
-  $(".exercise").hide();
   startExercise();
 });
 
@@ -95,15 +97,12 @@ function answerSetGenerator() {
 function startExercise() {
   $("#pageSubmenu a").on("click", function() {
     // hides all other sections
-    $(".learning-welcome-message").hide();
-    $(".multiplication-table").hide();
-    $(".multiplication-by-number").hide();
+    hideAndShow("exercise");
     // returns counter to zero and creates a new set
     counter = 0;
     answerSetGenerator();
     // checks that the player didnt press on the section he's already in
     if ($(exerciseClass).attr("class") != $(this).attr("class")) {
-      $(".exercise").show();
       // changes the buttons colors
       currentNumberExercise = this;
       $(currentNumberExercise).toggleClass("button-clicked");
@@ -132,8 +131,15 @@ function questionGenerator() {
   }
 
   // displays the question
-  var question = chosenNumber + " X " + randomNumber;
+  var quesion;
   answer = randomNumber * chosenNumber;
+  if (chosenNumber == 10 && randomNumber == 10) {
+    // $(".question").text(question);
+    // $(".question").css("font-size","2em");
+    question = chosenNumber + "X" + randomNumber;
+  } else {
+    question = chosenNumber + " X " + randomNumber;
+  }
   $(".question").text(question);
   buttonsAnswers();
   checkAnswer();
@@ -241,6 +247,20 @@ function makeVisual(result) {
 
 ///////////////////////////////////////////////////////////////////////////
 
+///////////////////////////// contact page ///////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////
+
+$(".contact-form-button").click(function() {
+  hideAndShow("contact-form");
+});
+
+$(".gform").submit(function() {
+  hideAndShow("contact-form-completed");
+});
+
+///////////////////////////////////////////////////////////////////////////
+
 ///////////////////////////// dark mode ///////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
@@ -255,6 +275,7 @@ $(".dark-mode").click(function() {
   $(".learning-welcome-message").toggleClass("learning-welcome-message-dark");
   $(".by-number-card").toggleClass("by-number-card-dark");
   $("#sidebar ul li a").toggleClass("sidebar-dark-mode");
+  $(".contact-form").toggleClass("contact-form-dark");
   if ($(".dark-mode-text").text() == "למצב לילה") {
     $(".dark-mode-text").text("למצב יום");
     $(".dark-mode .fas").removeClass('fa-moon').addClass('fa-sun');
@@ -264,11 +285,28 @@ $(".dark-mode").click(function() {
   }
 });
 
-
 if ($(window).width() < 768) {
+
   $("#sidebarCollapse").click(function() {
-    $(".main-screen").toggleClass("main-screen-hidden");
-    $(".mobile-nav-button").toggleClass("mobile-nav-button-hidden");
+    hideMainScreen();
   });
 
+  $("#sidebar ul li li a").click(function() {
+    $('#sidebar').toggleClass('active');
+    $("#sidebarCollapse").toggleClass('active');
+    hideMainScreen();
+  });
+
+}
+
+function hideMainScreen() {
+  if ($(".main-screen").hasClass("main-screen-hidden")) {
+    setTimeout(function() {
+      $(".main-screen").toggleClass("main-screen-hidden");
+      $(".mobile-nav-button").toggleClass("mobile-nav-button-hidden");
+    }, 600);
+  } else {
+    $(".main-screen").toggleClass("main-screen-hidden");
+    $(".mobile-nav-button").toggleClass("mobile-nav-button-hidden");
+  }
 }

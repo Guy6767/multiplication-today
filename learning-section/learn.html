@@ -102,7 +102,7 @@
             <ul class="nav navbar-nav ml-auto top-navbar-items">
               <hr />
               <li class="nav-item active">
-                <a class="nav-link" href="#"><i class="fas fa-envelope"></i>לפניות</a>
+                <a class="nav-link contact-form-button" href="#"><i class="fas fa-envelope"></i>לפניות</a>
               </li>
               <hr />
               <li class="nav-item active">
@@ -492,11 +492,39 @@
         </div>
 
 
+        <!-- contact form -->
+
+        <div class="contact-form">
+
+          <form class="gform" action="https://script.google.com/macros/s/AKfycbx4o6sOdTQWphTL_SrFIQHRJS48f9lnFqC6Twlw/exec" method="post">
+            <h1>פניות למערכת</h1>
+            <p dir="rtl">נתקלת בבעיה באתר? יש לכם הצעות לשיפור? סתם רוצים לשאול שאלה?<br /> מלאו את הפרטים שלכם כאן וספרו לנו על כך.</p>
+            <input name="name" placeholder="שם" type="text" required>
+            <input name="email" placeholder="אימייל" type="email" required>
+            <input name="title" placeholder="נושא" type="text" required>
+            <textarea name="description" placeholder="פרטי הפנייה"></textarea>
+            <button type="Submit" class="form-button">שלח</button>
+
+          </form>
+
+        </div>
+
+        <div class="contact-form-completed">
+          <div class="completed-form-message">
+            <h1 dir="rtl">ההודעה נשלחה.</h1>
+          <p dir="rtl">תודה על פנייתכם!</p>
+          </div>
+        
+        </div>
+
       </div>
 
 
-
     </div>
+
+
+
+  </div>
   </div>
 
   <!-- bootstrap -->
@@ -507,6 +535,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
   <!-- js external file -->
   <script src="learn.js" charset="utf-8"></script>
+  <!-- ajax mail form -->
+  <script data-cfasync="false" type="text/javascript" src="form-submission-handler.js"></script>
+
+
 </body>
 
 </html>
