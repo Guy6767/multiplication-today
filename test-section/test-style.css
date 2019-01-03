@@ -1,15 +1,6 @@
-
 body {
   font-family: 'Heebo', sans-serif;
   background: #f0f0f0;
-  color: #4c4c4c;
-}
-
-p {
-  font-family: 'Heebo', sans-serif;
-  font-size: 1.1em;
-  font-weight: 300;
-  line-height: 1.7em;
   color: #4c4c4c;
 }
 
@@ -17,6 +8,17 @@ a, a:hover, a:focus {
   color: inherit;
   text-decoration: none;
   transition: all 0.3s;
+}
+
+.a-dark-mode {}
+
+.a-dark-mode:hover {
+  background-color: #282828;
+}
+
+.button-clicked {
+  background-color: #f0f0f0 !important;
+  color: #E53B3B !important;
 }
 
 .fas {
@@ -42,7 +44,13 @@ a, a:hover, a:focus {
   border: none;
 }
 
+.main-screen-hidden {
+  display: none !important;
+}
 
+.mobile-nav-button-hidden {
+  display: none !important;
+}
 
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -57,24 +65,26 @@ a, a:hover, a:focus {
 #sidebar {
   min-width: 250px;
   max-width: 250px;
-  background: #007bff;
+  background: #E53B3B;
   color: #fff;
   text-align: right;
   transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
   transform-origin: bottom left;
   box-shadow: 0 0 25px rgba(0, 0, 0, .2);
+}
 
+.sidebar-dark {
+  background-color: #202020 !important;
 }
 
 #sidebar.active {
   margin-left: -250px;
   transform: rotateY(100deg);
-
 }
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #0065d1;
+  background: #D33131;
 }
 
 #sidebar ul.components {
@@ -92,75 +102,91 @@ a, a:hover, a:focus {
   font-size: 1.1em;
   display: block;
   height: 3em;
-  background-color: #0076f3cc;
+  background-color: #D33131;
 }
 
 #sidebar ul li a:hover {
-  color: #0065d1;
+  color: #D33131;
   background: #fff;
+}
+
+.sidebar-dark-mode {
+  background: #282828 !important;
+  color: #fff !important;
+}
+
+.sidebar-dark-mode:hover {
+  color: #fff !important;
+  background: #D33131 !important;
 }
 
 #sidebar ul li.active>a, a[aria-expanded="true"] {
   color: #fff;
-  background: #0065d1;
-}
-
-.dropdown-toggle {
-  margin-top: 1em;
-}
-
-a[data-toggle="collapse"] {
-  /* position: absolute; */
-}
-
-.dropdown-toggle::after {
-  display: block;
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
+  background: #D33131;
 }
 
 ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #0065d1;
+  background: #D33131;
 }
-
 
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
+/* body  */
+.body-dark {
+  background-color: #202020;
+}
 
-.question-card {
-  height: 20em;
+/* navigation */
+.navbar-dark {
+  background-color: #282828 !important;
+  color: rgba(255, 255, 255, 0.87) !important;
+}
+
+.mobile-nav-button {
+  width: 2.5em;
+  margin-right: 10px;
+  background-color: #E53B3B !important;
+  border-color: #E53B3B !important;
+}
+
+@media (max-width: 768px) {
+  .top-navbar-items {
+    margin-top: 1em;
+    margin-right: 0.5em;
+    text-align: right;
+  }
+
+  .top-navbar-items hr {
+    width: 100%;
+    border-top: 1px solid rgba(17, 11, 11, 0.42);
+  }
+}
+
+/* welcome message */
+.test-welcome-message {
   text-align: center;
-  font-family: 'Heebo', sans-serif;
   background-color: white;
   margin-top: 2rem;
   margin-bottom: 2rem;
   padding: 1em;
   border-radius: 10px;
   box-shadow: 0 0 25px rgba(0, 0, 0, .10);
-  object-fit: contain;
+  display: flex;
 }
 
-.answer-button {
-  height: 5em;
-  text-align: center;
-  font-family: 'Heebo', sans-serif;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding: 1em;
-  border-radius: 10px !important;
-  box-shadow: 0 0 25px rgba(0, 0, 0, .20);
-  object-fit: contain;
+.test-welcome-message-dark {
+  background-color: #282828;
+  color: rgba(255, 255, 255, 0.87);
 }
 
-.answer-container {
-    display: inline;
+.welcome-message {
+  margin-top: 1em;
 }
 
+/******************** test section *************************/
 #content {
   width: 100%;
   padding: 20px;
@@ -168,6 +194,241 @@ ul ul a {
   transition: all 0.3s;
 }
 
+/* question */
+.question-card {
+  height: 20em;
+  text-align: center;
+  background-color: white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, .10);
+}
+
+.question-card-dark {
+  background-color: #282828;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.question {
+  margin-top: 1em;
+  font-size: 6em;
+}
+
+/* answers buttons */
+.answer-button {
+  height: 5em;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1em;
+  border-radius: 10px !important;
+  border-width: 0;
+  box-shadow: 0 0 25px rgba(0, 0, 0, .20) !important;
+  object-fit: contain;
+  background-color: #E53B3B;
+  color: #fff;
+}
+
+.answer-button:hover {
+  background-color: #D33131;
+  color: #fff;
+}
+
+.answer-button:active {
+  color: #4c4c4c !important;
+  background-color: #fff !important;
+}
+
+.answer-container {
+  display: inline;
+}
+
+/**************** test results *******************/
+.test-results, .answers, .mistakes {
+  text-align: center;
+  background-color: #fff;
+  color: #707070;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, .10);
+}
+
+.test-results-dark, .answers-dark, .mistakes-dark, .circle-dark {
+  background-color: #282828 !important;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.test-review .row {
+  flex-direction: row-reverse;
+}
+
+.test-results .grade, .title {
+  border-left: 2px solid #A6A6A6;
+}
+
+.test-results h1 {
+  margin-top: 10%;
+}
+
+.test-results .grade span {
+  color: #E53B3B;
+}
+
+.circle {
+  position: relative;
+  top: 5px;
+  left: 5px;
+  text-align: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  background-color: #ffffff;
+}
+
+.circle-border {
+  position: relative;
+  text-align: center;
+  width: 110px;
+  height: 110px;
+  margin-left: 30%;
+  border-radius: 100%;
+  background-color: #E53B3B;
+  background:
+    linear-gradient(270deg, transparent 50%, #e3e3e3 50%),
+    linear-gradient(90deg, #e3e3e3 50%, #E53B3B 50%);
+}
+
+.answers h4 {
+  margin: 1em 0;
+}
+
+.answers hr, .mistakes hr {
+  margin: 2em auto;
+  border-top: 2px solid #A6A6A6;
+  width: 40%;
+}
+
+.answer-result {
+  padding: 1em;
+  font-size: 2em;
+}
+
+
+
+@media (max-width: 768px) {
+  .test-results .grade, .title {
+    border-left: none;
+    border-bottom: 2px solid #A6A6A6;
+  }
+
+  .title {
+    padding-bottom: 2em;
+  }
+
+  .grade {
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+
+  .circle-results {
+    padding-top: 2em;
+  }
+}
+
+/* background:
+  linear-gradient(162deg, transparent 50%, #f0f0f0 50%),
+  linear-gradient(90deg, #f0f0f0 50%, #E53B3B 50%);
+
+0% = 90
+10% = 126
+20% = 162
+30% = 198
+40% = 234
+50% = 270  */
+/* background: linear-gradient(270deg, #E53B3B 50%, transparent 50%),
+               linear-gradient(0deg, #E53B3B 50%, #f0f0f0 50%)
+
+
+change gradient 2
+
+50% = -90
+60% = -54
+70% = -18
+80% = 18
+90% = 54
+100% = 90 */
+/******************************* contact form ***************************/
+.contact-form, .contact-form-completed {
+  text-align: center;
+  background-color: #E53B3B;
+  color: white;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1em 2em;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, .10);
+  display: flex;
+  object-fit: contain;
+}
+
+.contact-form-completed {
+  padding: 4em;
+}
+
+.completed-form-message {
+  width: 100%;
+}
+
+.completed-form-message p {
+  margin-top: 1.5em;
+  font-size: 1.2em;
+}
+
+form {
+  margin: 2em auto;
+  width: 100%;
+}
+
+form p {
+  margin-bottom: 2em;
+}
+
+input, textarea, form button {
+  text-align: right;
+  width: 60%;
+  height: 3em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-radius: 10px;
+  border-style: none;
+  border-color: white;
+  padding: 1em;
+  box-shadow: 0 0 25px rgba(0, 0, 0, .10);
+}
+
+textarea {
+  height: 9em;
+}
+
+.form-button {
+  text-align: center;
+  color: #fff;
+}
+
+.form-button:hover {
+  background-color: #bff199;
+}
+
+@media (max-width: 768px) {
+  input, textarea {
+    width: 100%;
+  }
+}
+
+/*********************** sidebar ****************************/
 #sidebarCollapse {
   width: 40px;
   height: 40px;
@@ -206,7 +467,6 @@ ul ul a {
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
-
 @media (max-width: 768px) {
   #sidebar {
     margin-left: -250px;
@@ -241,13 +501,9 @@ ul ul a {
   #sidebarCollapse.active span:last-of-type {
     transform: rotate(-45deg) translate(1px, -1px);
   }
-
-
 }
 
-
 /* Scrollbar hiding */
-
 ::-webkit-scrollbar {
   width: 0;
 }

@@ -232,6 +232,11 @@ th {
 }
 
 /* by number */
+
+.multiplication-by-number .row {
+  flex-direction: row-reverse;
+}
+
 .by-number-card {
   text-align: right;
   font-size: 2em;
@@ -373,12 +378,6 @@ th {
   font-size: 1.2em;
 }
 
-.contact-form-dark {
-  background-color: #282828;
-  color: rgba(255, 255, 255, 0.87);
-}
-
-
 form {
   margin: 2em auto;
   width: 100%;
@@ -407,6 +406,7 @@ textarea {
 
 .form-button {
   text-align: center;
+  color: #fff;
 }
 
 .form-button:hover {
