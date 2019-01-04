@@ -35,8 +35,8 @@ function startLearning() {
   $("#homeSubmenu a").on("click", function() {
     // checks that the player didnt press on the section he's already in
     if ($(testClass).attr("class") != $(this).attr("class")) {
-      currentNumbertest = this;
-      $(currentNumbertest).toggleClass("button-clicked");
+      currentNumberTest = this;
+      $(currentNumberTest).toggleClass("button-clicked");
       $(testClass).toggleClass("button-clicked");
       testClass = $(this);
     }
@@ -56,7 +56,7 @@ $(document).ready(function() {
 });
 
 // initias global variables
-var currentNumbertest;
+var currentNumberTest;
 var testClass;
 var answer;
 var answerNumber;
@@ -95,8 +95,8 @@ function startTest() {
 
       counter = 0;
       // changes buttons colors
-      currentNumbertest = this;
-      $(currentNumbertest).toggleClass("button-clicked");
+      currentNumberTest = this;
+      $(currentNumberTest).toggleClass("button-clicked");
       $(testClass).toggleClass("button-clicked");
       testClass = $(this);
       questionGenerator();
@@ -265,7 +265,9 @@ $(".dark-mode").click(function() {
   $(".navbar").toggleClass("navbar-dark");
   $("#sidebar").toggleClass("sidebar-dark");
   $(".test-welcome-message").toggleClass("test-welcome-message-dark");
-  $("#sidebar ul li a").toggleClass("sidebar-dark-mode");
+  // $("#sidebar ul li a").toggleClass("sidebar-dark-mode");
+  // $(".button-clicked").css("background-color","black");
+  // document.querySelector(".button-clicked").style.backgroundColor = "black !important";
   $(".contact-form").toggleClass("contact-form-dark");
   $(".test-results").toggleClass("test-results-dark");
   $(".answers").toggleClass("answers-dark");
@@ -275,6 +277,7 @@ $(".dark-mode").click(function() {
   if ($(".dark-mode-text").text() == "למצב לילה") {
     $(".dark-mode-text").text("למצב יום");
     $(".dark-mode .fas").removeClass('fa-moon').addClass('fa-sun');
+
   } else {
     $(".dark-mode .fas").removeClass('fa-sun').addClass('fa-moon');
     $(".dark-mode-text").text("למצב לילה");

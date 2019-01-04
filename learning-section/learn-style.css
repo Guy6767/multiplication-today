@@ -185,6 +185,22 @@ ul ul a {
   margin-top: 1em;
 }
 
+
+.welcome-message h1 {
+  padding: 0.5em;
+  color: #007bff;
+}
+
+.welcome-message p {
+  font-size: 1.5em;
+}
+
+@media (min-width: 664px) {
+  .welcome-message p {
+    padding: 2em;
+  }
+}
+
 /********************* learning section ************************/
 /* multiplication table */
 .multiplication-table {
