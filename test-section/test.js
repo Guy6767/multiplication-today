@@ -20,8 +20,6 @@ function hideAllAndShowThis(showElement) {
   $("." + showElement).show();
 }
 
-hideAllAndShowThis("test-review");
-
 ///////////////////////////////////////////////////////////////////////////
 
 ///////////////////////// learn section /////////////////////////////////
@@ -29,7 +27,7 @@ hideAllAndShowThis("test-review");
 ///////////////////////////////////////////////////////////////////////////
 
 $(document).ready(function() {
-  // hideAllAndShowThis("test-welcome-message");
+  hideAllAndShowThis("test-welcome-message");
   startLearning();
 });
 
@@ -181,7 +179,6 @@ function checkAnswer() {
   $(".answer-button").off().on("click", function() {
 
     userAnswer = this;
-    console.log(counter);
     if (answer == parseInt($(userAnswer).text())) {
       makeSound();
       results++;
@@ -233,7 +230,6 @@ function circleScore(score) {
 
   } else {
     scoreDegree = -90+(score-5)*36;
-    console.log(scoreDegree);
     $(".circle-border").css("background","linear-gradient(270deg, #E53B3B 50%, transparent 50%),linear-gradient("+scoreDegree+"deg, #E53B3B 50%, #e3e3e3 50%)");
   }
 
