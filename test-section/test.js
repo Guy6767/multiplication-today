@@ -116,7 +116,7 @@ function questionGenerator() {
 
 
   // checks what test the user had chosen
-  if ((testClass.attr("class") == "test-random button-clicked") || (testClass.attr("class") == "test-random button-clicked sidebar-dark-mode")) {
+  if (testClass.attr("id") == "test-random") {
     chosenNumber = randomNumberGenerator(1, 10);
   } else {
     chosenNumber = parseInt(testClass.attr("class").slice(5));

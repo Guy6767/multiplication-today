@@ -124,7 +124,7 @@ function questionGenerator() {
   var randomNumber = answerSet[counter];
 
   // checks what exercise the user had chosen
-  if ((exerciseClass.attr("class") == "exercise-random button-clicked") || (exerciseClass.attr("class") == "exercise-random button-clicked sidebar-dark-mode")) {
+  if (exerciseClass.attr("id") == "exercise-random") {
     chosenNumber = randomNumberGenerator(1, 10);
   } else {
     chosenNumber = parseInt(exerciseClass.attr("class").slice(9));
@@ -274,7 +274,7 @@ $(".dark-mode").click(function() {
   $("#sidebar").toggleClass("sidebar-dark");
   $(".learning-welcome-message").toggleClass("learning-welcome-message-dark");
   $(".by-number-card").toggleClass("by-number-card-dark");
-  $("#sidebar ul li a").toggleClass("sidebar-dark-mode");
+  // $("#sidebar ul li a").toggleClass("sidebar-dark-mode");
   if ($(".dark-mode-text").text() == "למצב לילה") {
     $(".dark-mode-text").text("למצב יום");
     $(".dark-mode .fas").removeClass('fa-moon').addClass('fa-sun');
