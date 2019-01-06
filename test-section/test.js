@@ -22,26 +22,13 @@ function hideAllAndShowThis(showElement) {
 
 ///////////////////////////////////////////////////////////////////////////
 
-///////////////////////// learn section /////////////////////////////////
+///////////////////////// welcome message /////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
 
 $(document).ready(function() {
   hideAllAndShowThis("test-welcome-message");
-  startLearning();
 });
-
-function startLearning() {
-  $("#homeSubmenu a").on("click", function() {
-    // checks that the player didnt press on the section he's already in
-    if ($(testClass).attr("class") != $(this).attr("class")) {
-      currentNumberTest = this;
-      $(currentNumberTest).toggleClass("button-clicked");
-      $(testClass).toggleClass("button-clicked");
-      testClass = $(this);
-    }
-  });
-}
 
 
 ///////////////////////////////////////////////////////////////////////////
@@ -86,10 +73,11 @@ function answerSetGenerator() {
 
 // starts the test mode and handles the sidebar buttom style
 function startTest() {
-  $("#pageSubmenu a").on("click", function() {
+  $("#pageSubmenu a, #test-random, #test-time").on("click", function() {
     hideAllAndShowThis("test");
     counter = 1;
     answerSetGenerator();
+
     // checks that the player didnt press on the section he's already in
     if ($(testClass).attr("class") != $(this).attr("class")) {
 
@@ -99,6 +87,15 @@ function startTest() {
       $(currentNumberTest).toggleClass("button-clicked");
       $(testClass).toggleClass("button-clicked");
       testClass = $(this);
+
+      // sets up the question by the chosen number
+      if (testClass.attr("id") == "test-time") {
+        chosenNumber = prompt("בחר מספר להיבחן עליו");
+
+      } else {
+        chosenNumber = parseInt(testClass.attr("class").slice(5));
+      }
+
       questionGenerator();
     }
   });
@@ -115,11 +112,9 @@ function questionGenerator() {
   var randomNumber = answerSet[counter];
 
 
-  // checks what test the user had chosen
+  // checks what if the player is on random mode
   if (testClass.attr("id") == "test-random") {
     chosenNumber = randomNumberGenerator(1, 10);
-  } else {
-    chosenNumber = parseInt(testClass.attr("class").slice(5));
   }
 
   // displays the question
@@ -182,12 +177,12 @@ function checkAnswer() {
     if (answer == parseInt($(userAnswer).text())) {
       makeSound();
       results++;
-      $(".correct-result-"+counter).text(question+" = "+answer).css("color","#70707057");
+      $(".correct-result-" + counter).text(question + " = " + answer).css("color", "#70707057");
       questionGenerator();
 
     } else {
       makeSound();
-      $(".correct-result-"+counter).text(question+" = "+answer).css("color","#E53B3B");
+      $(".correct-result-" + counter).text(question + " = " + answer).css("color", "#E53B3B");
       questionGenerator();
 
     }
@@ -205,18 +200,21 @@ var results = 0;
 
 function testResults() {
   hideAllAndShowThis("test-review");
-  if(results==10) {
+  if (results == 10) {
     $(".grade span").text(results);
   } else {
-    $(".grade span").text("0"+results);
+    $(".grade span").text("0" + results);
   }
   circleScore(results);
   results = 0;
-  // resultsVisual(results);
+
   $(".test-review button").on("click", function() {
     results = 0;
     counter = 0;
     hideAllAndShowThis("test");
+    // if (testClass.attr("id") == "test-time") {
+    //   chosenNumber = prompt("בחר מספר להיבחן עליו");
+    // }
     answerSetGenerator();
     questionGenerator();
   });
@@ -224,13 +222,13 @@ function testResults() {
 
 function circleScore(score) {
 
-  if(score < 6) {
-    scoreDegree = 90+score*36;
-    $(".circle-border").css("background","linear-gradient("+scoreDegree+"deg, transparent 50%, #e3e3e3 50%),linear-gradient(90deg, #e3e3e3 50%, #E53B3B 50%)");
+  if (score < 6) {
+    scoreDegree = 90 + score * 36;
+    $(".circle-border").css("background", "linear-gradient(" + scoreDegree + "deg, transparent 50%, #e3e3e3 50%),linear-gradient(90deg, #e3e3e3 50%, #E53B3B 50%)");
 
   } else {
-    scoreDegree = -90+(score-5)*36;
-    $(".circle-border").css("background","linear-gradient(270deg, #E53B3B 50%, transparent 50%),linear-gradient("+scoreDegree+"deg, #E53B3B 50%, #e3e3e3 50%)");
+    scoreDegree = -90 + (score - 5) * 36;
+    $(".circle-border").css("background", "linear-gradient(270deg, #E53B3B 50%, transparent 50%),linear-gradient(" + scoreDegree + "deg, #E53B3B 50%, #e3e3e3 50%)");
   }
 
 }
@@ -265,7 +263,7 @@ $(".dark-mode").click(function() {
   $(".navbar").toggleClass("navbar-dark");
   $("#sidebar").toggleClass("sidebar-dark");
   $(".test-welcome-message").toggleClass("test-welcome-message-dark");
-  // $("#sidebar ul li a").toggleClass("sidebar-dark-mode");
+  $("#sidebar ul li a").toggleClass("sidebar-dark-mode");
   // $(".button-clicked").css("background-color","black");
   // document.querySelector(".button-clicked").style.backgroundColor = "black !important";
   $(".contact-form").toggleClass("contact-form-dark");
