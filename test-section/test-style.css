@@ -208,11 +208,11 @@ ul ul a {
 }
 
 /* question */
-.question-card {
+.question-card, .progress-bar {
   height: 20em;
   text-align: center;
   background-color: white;
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-bottom: 2rem;
   padding: 1em;
   border-radius: 10px;
@@ -228,6 +228,21 @@ ul ul a {
   margin-top: 1em;
   font-size: 6em;
 }
+
+.progress-bar {
+  height: 2em;
+  margin: 0;
+  padding: 0;
+}
+
+.progress {
+  height: 100%;
+  width: 1%;
+  border-radius: 10px 0 0 10px;
+
+  background-color: #E53B3B;
+}
+
 
 /* answers buttons */
 .answer-button {

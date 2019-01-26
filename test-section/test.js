@@ -17,19 +17,13 @@ function hideAllAndShowThis(showElement) {
   $(".contact-form").hide();
   $(".contact-form-completed").hide();
   $(".test-review").hide();
+  $(".progress-bar").hide();
   $("." + showElement).show();
 }
-
-///////////////////////////////////////////////////////////////////////////
-
-///////////////////////// welcome message /////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////
 
 $(document).ready(function() {
   hideAllAndShowThis("test-welcome-message");
 });
-
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -91,7 +85,7 @@ function startTest() {
       // sets up the question by the chosen number
       if (testClass.attr("id") == "test-time") {
         chosenNumber = prompt("בחר מספר להיבחן עליו");
-
+        $(".progress-bar").show();
       } else {
         chosenNumber = parseInt(testClass.attr("class").slice(5));
       }
@@ -104,15 +98,20 @@ function startTest() {
 // generates a random question based on the number clicked
 function questionGenerator() {
 
+  // reset the progress bar for time test
+  clearInterval(progressInterval);
+  $(".progress").css("width", "0%");
+  progressBar();
+
   if (counter == 10) {
     counter = 1;
     testResults();
+    clearInterval(progressInterval);
     answerSetGenerator();
   }
   var randomNumber = answerSet[counter];
 
-
-  // checks what if the player is on random mode
+  // checks if the player is on random mode
   if (testClass.attr("id") == "test-random") {
     chosenNumber = randomNumberGenerator(1, 10);
   }
@@ -173,19 +172,20 @@ function buttonsAnswers() {
 function checkAnswer() {
   $(".answer-button").off().on("click", function() {
 
+    // adds the results to the results page
     userAnswer = this;
     if (answer == parseInt($(userAnswer).text())) {
-      makeSound();
       results++;
       $(".correct-result-" + counter).text(question + " = " + answer).css("color", "#70707057");
-      questionGenerator();
-
+      console.log("hey");
     } else {
-      makeSound();
       $(".correct-result-" + counter).text(question + " = " + answer).css("color", "#E53B3B");
-      questionGenerator();
-
+      console.log("hello");
     }
+
+    makeSound();
+    questionGenerator();
+
   });
 }
 
@@ -212,9 +212,11 @@ function testResults() {
     results = 0;
     counter = 0;
     hideAllAndShowThis("test");
-    // if (testClass.attr("id") == "test-time") {
-    //   chosenNumber = prompt("בחר מספר להיבחן עליו");
-    // }
+    if (testClass.attr("id") == "test-time") {
+      chosenNumber = prompt("בחר מספר להיבחן עליו");
+      $(".progress-bar").show();
+
+    }
     answerSetGenerator();
     questionGenerator();
   });
@@ -232,6 +234,30 @@ function circleScore(score) {
   }
 
 }
+
+var progressInterval;
+
+function progressBar() {
+
+  var width = 0;
+  progressInterval = setInterval(filler, 10);
+
+  function filler() {
+
+    if (width >= 100) {
+      clearInterval(progressInterval);
+      $(".progress").css("width", "0%");
+      $(".correct-result-" + counter).text(question + " = " + answer).css("color", "#E53B3B");
+      questionGenerator();
+
+    } else {
+      width = width + 0.2;
+      $(".progress").css("width", width + '%');
+    }
+
+  }
+}
+
 
 
 
