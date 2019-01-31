@@ -10,8 +10,6 @@ a, a:hover, a:focus {
   transition: all 0.3s;
 }
 
-.a-dark-mode {}
-
 .a-dark-mode:hover {
   background-color: #282828;
 }
