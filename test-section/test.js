@@ -36,7 +36,7 @@ $(document).ready(function() {
   startTest();
 });
 
-// initias global variables
+// initiates global variables
 var currentNumberTest;
 var testClass;
 var answer;
@@ -44,6 +44,7 @@ var answerNumber;
 var userAnswer;
 var answerSet;
 var counter;
+var question;
 
 // creates a random number in a range
 function randomNumberGenerator(min, max) {
@@ -81,15 +82,8 @@ function startTest() {
       $(currentNumberTest).toggleClass("button-clicked");
       $(testClass).toggleClass("button-clicked");
       testClass = $(this);
-
       // sets up the question by the chosen number
-      if (testClass.attr("id") == "test-time") {
-        chosenNumber = prompt("בחר מספר להיבחן עליו");
-        $(".progress-bar").show();
-      } else {
-        chosenNumber = parseInt(testClass.attr("class").slice(5));
-      }
-
+      chosenNumber = parseInt(testClass.attr("class").slice(5));
       questionGenerator();
     }
   });
@@ -98,15 +92,9 @@ function startTest() {
 // generates a random question based on the number clicked
 function questionGenerator() {
 
-  // reset the progress bar for time test
-  clearInterval(progressInterval);
-  $(".progress").css("width", "0%");
-  progressBar();
-
   if (counter == 10) {
     counter = 1;
     testResults();
-    clearInterval(progressInterval);
     answerSetGenerator();
   }
   var randomNumber = answerSet[counter];
@@ -117,15 +105,11 @@ function questionGenerator() {
   }
 
   // displays the question
-  var quesion;
   answer = randomNumber * chosenNumber;
   if (chosenNumber == 10 && randomNumber == 10) {
-
     question = chosenNumber + "X" + randomNumber;
-  } else {
-
-    question = chosenNumber + " X " + randomNumber;
   }
+  else question = chosenNumber + " X " + randomNumber;
   $(".question").text(question);
   buttonsAnswers();
   checkAnswer();
@@ -232,32 +216,7 @@ function circleScore(score) {
     scoreDegree = -90 + (score - 5) * 36;
     $(".circle-border").css("background", "linear-gradient(270deg, #E53B3B 50%, transparent 50%),linear-gradient(" + scoreDegree + "deg, #E53B3B 50%, #e3e3e3 50%)");
   }
-
 }
-
-var progressInterval;
-
-function progressBar() {
-
-  var width = 0;
-  progressInterval = setInterval(filler, 10);
-
-  function filler() {
-
-    if (width >= 100) {
-      clearInterval(progressInterval);
-      $(".progress").css("width", "0%");
-      $(".correct-result-" + counter).text(question + " = " + answer).css("color", "#E53B3B");
-      questionGenerator();
-
-    } else {
-      width = width + 0.2;
-      $(".progress").css("width", width + '%');
-    }
-
-  }
-}
-
 
 
 
